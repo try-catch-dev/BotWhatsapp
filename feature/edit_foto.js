@@ -53,8 +53,6 @@ const EditPhotoRequest = async (base64, bg_color) => {
         },
     })
         .then((response) => {
-            // console.log(response.data);
-
             if (response.status == 200) {
                 result.success = true;
                 result.base64 = response.data.data.result_b64

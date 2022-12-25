@@ -1,6 +1,7 @@
 const qrcode = require('qrcode-terminal');
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const { EditPhotoHandler } = require('./feature/edit_foto');
+const { ChatAIHandler } = require('./feature/chat_ai');
 
 
 
@@ -28,8 +29,12 @@ client.on('message', async msg => {
     }
 
     // edit_bg/bg_color
-    if (text.includes("edit_bg/")) {
+    if (text.includes("#edit_bg/")) {
         await EditPhotoHandler(text, msg);
+    }
+    // #ask/question?
+    if (text.includes("#ask/")) {
+        await ChatAIHandler(text, msg);
     }
 
 });
