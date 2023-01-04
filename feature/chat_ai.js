@@ -15,7 +15,7 @@ const ChatAIHandler = async (text, msg) => {
     const response = await ChatGPTRequest(question)
 
     if (!response.success) {
-        return msg.reply('Terjadi kesalahan.');
+        return msg.reply(response.message);
     }
 
     return msg.reply(response.data);
@@ -49,7 +49,7 @@ const ChatGPTRequest = async (text) => {
         .then((response) => {
             if (response.status == 200) {
                 result.success = true;
-                result.data = response?.data?.choices?.[0].text || 'Aku gak tau';
+                result.data = response.data?.choices?.[0]?.text || 'Aku gak tau';
             } else {
                 result.message = "Failed response";
             }
