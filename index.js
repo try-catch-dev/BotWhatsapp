@@ -28,7 +28,7 @@ client.on('message', async msg => {
         msg.reply('pong');
     }
 
-    // edit_bg/bg_color
+    // #edit_bg/bg_color
     if (text.includes("#edit_bg/")) {
         await EditPhotoHandler(text, msg);
     }
