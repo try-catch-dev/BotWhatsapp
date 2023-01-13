@@ -48,12 +48,14 @@ const ChatGPTRequest = async (text) => {
     })
         .then((response) => {
             if (response.status == 200) {
+
                 const { choices } = response.data;
 
                 if (choices && choices.length) {
                     result.success = true;
                     result.data = choices[0].text;
                 }
+
             } else {
                 result.message = "Failed response";
             }
